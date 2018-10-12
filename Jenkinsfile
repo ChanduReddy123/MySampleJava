@@ -11,17 +11,23 @@ pipeline {
        }
     }
     stage('Build') {
+      steps {
       sh'''
+      #!/bin/sh
       cd SpringMVCSecurityXML/
       mvn clean package
       '''
     }
+    }
     stage('Listing') {
-      sh'''
-      cd target/
-      ls
-      pwd
-      '''
+      steps {
+        sh'''
+        #!/bin/sh
+        cd target/
+        ls
+        pwd
+        '''
+      }
     }
   }
 }
