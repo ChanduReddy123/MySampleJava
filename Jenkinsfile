@@ -17,6 +17,8 @@ pipeline {
       cd SpringMVCSecurityXML/
       mvn clean package
       pwd
+      export name=ChanduReddy123
+      echo $name
       '''
     }
     }
@@ -27,12 +29,18 @@ pipeline {
         cd SpringMVCSecurityXML/target/
         ls
         pwd
+        echo $name
         '''
       }
     }
     stage('CopyArtifacts') {
       steps {
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
+      }
+    }
+    stage('deploy') {
+      steps {
+
       }
     }
   }
