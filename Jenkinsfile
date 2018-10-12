@@ -23,7 +23,7 @@ pipeline {
       steps {
         sh'''
         #!/bin/sh
-        cd target/
+
         ls
         pwd
         '''
