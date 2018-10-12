@@ -38,10 +38,10 @@ pipeline {
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
       }
     }
-    stage('deploy') {
-      steps {
-
-      }
-    }
+    // stage('deploy') {
+    //   steps {
+    //
+    //   }
+    // }
   }
 }
