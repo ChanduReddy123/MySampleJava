@@ -32,7 +32,7 @@ pipeline {
     }
     stage('CopyArtifacts') {
       steps {
-        copyArtifacts filter: 'SpringMVCSecurityXML/target/SpringMVCSecurityXML.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
+        archive '**/*.war'
       }
     }
   }
