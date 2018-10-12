@@ -32,7 +32,7 @@ pipeline {
     }
     stage('CopyArtifacts') {
       steps {
-        archive '**/*.war'
+        archiveArtifacts artifacts: '**/*.war', fingerprint: true
       }
     }
   }
