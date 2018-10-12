@@ -16,6 +16,7 @@ pipeline {
       #!/bin/sh
       cd SpringMVCSecurityXML/
       mvn clean package
+      pwd
       '''
     }
     }
@@ -23,7 +24,7 @@ pipeline {
       steps {
         sh'''
         #!/bin/sh
-
+        cd SpringMVCSecurityXML/target/
         ls
         pwd
         '''
