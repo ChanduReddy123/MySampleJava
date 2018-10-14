@@ -2,6 +2,9 @@ pipeline {
   agent{
      label 'jenkins_agent1'
   }
+  withcredentials{
+
+  }
   stages {
     stage('GitCheckout') {
       steps {
@@ -38,10 +41,15 @@ pipeline {
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
       }
     }
-    // stage('deploy') {
-    //   steps {
-    //
-    //   }
-    // }
+    stage('deploy') {
+          steps {
+            withCredentials([usernameColonPassword(credentialsId: 'Tomcat', variable: 'USERPASS')]) {
+              sh '''
+              set +x
+              echo $USERPASS
+              '''
+            }
+      }
+    }
   }
 }
