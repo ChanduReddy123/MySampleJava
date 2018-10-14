@@ -49,7 +49,7 @@ pipeline {
         ls /home/ubuntu/
         echo $BUILD_NUMBER
         cd ~/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/
-        ls
+        scp *.war ubuntu@10.0.0.94:/home/ubuntu
 
         '''
       }
