@@ -8,9 +8,6 @@ pipeline {
     echo $USERPASS
     '''
   }
-
-
-  }
   stages {
     stage('GitCheckout') {
       steps {
@@ -47,10 +44,6 @@ pipeline {
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
       }
     }
-    stage('deploy') {
-          steps {
-            echo $USERPASS
-      }
-    }
+
   }
 }
