@@ -44,9 +44,10 @@ pipeline {
         sh '''
         pwd
         ls
+        ls /home/ubuntu/
         echo $BUILD_NUMBER
-        cd "/var/lib/jenkins/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target"
-        ls
+        // cd "/var/lib/jenkins/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target"
+        // ls
         '''
       }
     }
