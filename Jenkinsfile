@@ -39,9 +39,13 @@ pipeline {
       }
     }
     stage('Deploy') {
+      agent none
       steps {
         sh '''
         pwd
+        ls
+        echo $BUILD_NUMBER
+        cd "/var/lib/jenkins/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target"
         ls
         '''
       }
