@@ -48,9 +48,9 @@ pipeline {
         ls
         ls /home/ubuntu/
         echo $BUILD_NUMBER
-        cd
-        pwd
-        
+        cd ~/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/
+        ls
+
         '''
       }
     }
