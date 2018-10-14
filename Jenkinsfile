@@ -2,7 +2,13 @@ pipeline {
   agent{
      label 'jenkins_agent1'
   }
-  withcredentials{
+  withCredentials([usernameColonPassword(credentialsId: 'Tomcat', variable: 'USERPASS')]) {
+    sh '''
+    set +x
+    echo $USERPASS
+    '''
+  }
+
 
   }
   stages {
@@ -43,12 +49,7 @@ pipeline {
     }
     stage('deploy') {
           steps {
-            withCredentials([usernameColonPassword(credentialsId: 'Tomcat', variable: 'USERPASS')]) {
-              sh '''
-              set +x
-              echo $USERPASS
-              '''
-            }
+            echo $USERPASS
       }
     }
   }
