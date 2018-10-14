@@ -39,8 +39,10 @@ pipeline {
       }
     }
     stage('Deploy') {
-      agent none
-      steps {
+      agent {
+              label 'master'
+          }
+          steps {
         sh '''
         pwd
         ls
