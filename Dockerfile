@@ -1,6 +1,6 @@
 from maven
 CMD git clone https://github.com/ChanduReddy123/MySampleJava.git
-workdir MySampleJava/SpringMVCSecurityXML/
+CMD cd MySampleJava/SpringMVCSecurityXML/
 CMD mvn clean package
 
 from tomcat:alpine
