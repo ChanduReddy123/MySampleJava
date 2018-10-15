@@ -43,15 +43,10 @@ pipeline {
               label 'master'
           }
           steps {
-        sh '''
-        pwd
-        ls
-        ls /home/ubuntu/
-        echo $BUILD_NUMBER
-        cd ~/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/
-        scp *.war ubuntu@10.0.0.94:/home/ubuntu/Deployer/
+            withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'SECRETFILE', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
+       scp -i $SECRETFILE ~/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war $USERNAME@10.0.0.94:/home/ubuntu
+}
 
-        '''
       }
     }
 
