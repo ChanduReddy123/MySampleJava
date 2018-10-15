@@ -13,8 +13,8 @@ pipeline {
     stage('Build') {
       steps {
         script{
-                
-                TotalWebservers=$(docker container ls -a | grep webserver | wc -l)
+
+                TotalWebservers=`docker container ls -a | grep webserver | wc -l`
                 if [ $TotalWebservers -gt 0 ]; then dc rm -f webserver;fi
                 cd MySampleJava/
                 docker build -t chanduredy/mybuilder .
