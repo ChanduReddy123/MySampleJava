@@ -13,8 +13,7 @@ pipeline {
     stage('build'){
       steps {
       sh'
-        pwd
-        ls
+        mkdir chandu
       '
       }
     }
