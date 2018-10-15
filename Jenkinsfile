@@ -44,7 +44,7 @@ pipeline {
           }
           steps {
             withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'SECRETFILE', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
-      echo $USERNAME
+      echo USERNAME
 }
 
       }
