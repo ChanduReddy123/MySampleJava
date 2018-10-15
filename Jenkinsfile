@@ -10,16 +10,6 @@ pipeline {
       //     [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ChanduReddy123/MySampleJava.git']]])
        }
     }
-    stage('Build') {
-      steps {
-        script{
-
-                pwd
-                ls
-                
-            }
-          }
-    }
     stage('CopyArtifacts') {
       steps {
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
