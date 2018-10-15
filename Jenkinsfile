@@ -14,7 +14,9 @@ pipeline {
       steps {
       sh'''
       TotalWebservers=`docker container ls -a | grep webserver | wc -l`
-      echo $TotalWebservers
+       cd MySampleJava/
+       pwd
+       ls
       '''
       }
     }
