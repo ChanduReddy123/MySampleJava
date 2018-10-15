@@ -12,10 +12,10 @@ pipeline {
     }
     stage('build'){
       steps {
-        script{
-          pwd
-          ls
-        }
+      sh'
+        pwd
+        ls
+      '
       }
     }
     stage('CopyArtifacts') {
