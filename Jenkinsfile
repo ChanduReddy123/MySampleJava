@@ -13,7 +13,8 @@ pipeline {
     stage('build'){
       steps {
       sh'''
-        mkdir chandu
+      TotalWebservers=`docker container ls -a | grep webserver | wc -l`
+      echo $TotalWebservers
       '''
       }
     }
