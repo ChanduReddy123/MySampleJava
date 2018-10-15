@@ -12,7 +12,7 @@ pipeline {
     }
     stage('Build') {
       steps {
-        sh'''
+        script{
                 #!/bin/bash
                 TotalWebservers=$(docker container ls -a | grep webserver | wc -l)
                 if [ $TotalWebservers -gt 0 ]; then dc rm -f webserver;fi
@@ -20,7 +20,7 @@ pipeline {
                 docker build -t chanduredy/mybuilder .
                 docker run --rm --network chandu --name webserver -p 8888:8080 -d chanduredy/mybuilder
 
-            '''
+            }
           }
     }
     stage('CopyArtifacts') {
