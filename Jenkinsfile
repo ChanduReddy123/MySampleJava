@@ -13,11 +13,12 @@ pipeline {
     stage('Build') {
       steps {
           script{
+                #!/bin/bash
                 TotalWebservers=$(docker container ls -a | grep webserver | wc -l)
                 if [ $TotalWebservers -gt 0 ]; then dc rm -f webserver;fi
                 cd MySampleJava/
                 docker build -t chanduredy/mybuilder .
-                dr --rm --network chandu --name webserver -p 8888:8080 -d chanduredy/mybuilder
+                docker run --rm --network chandu --name webserver -p 8888:8080 -d chanduredy/mybuilder
 
               }
           }
