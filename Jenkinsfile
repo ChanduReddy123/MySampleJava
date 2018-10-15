@@ -44,7 +44,7 @@ pipeline {
           }
           steps {
             withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'SECRETFILE', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
-      echo USERNAME
+      scp -i SECRETFILE ~/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war USERNAME@10.0.0.94:/home/ubuntu
 }
 
       }
