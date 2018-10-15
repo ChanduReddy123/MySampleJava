@@ -12,9 +12,9 @@ pipeline {
     }
     stage('build'){
       steps {
-      sh'
+      sh'''
         mkdir chandu
-      '
+      '''
       }
     }
     stage('CopyArtifacts') {
