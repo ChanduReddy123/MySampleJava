@@ -17,6 +17,8 @@ pipeline {
                 TotalWebservers=0
 
                 cd MySampleJava/
+                pwd
+                ls
                 docker build -t chanduredy/mybuilder .
                 docker run --rm --network chandu --name webserver -p 8888:8080 -d chanduredy/mybuilder
 
