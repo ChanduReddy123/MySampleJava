@@ -14,8 +14,9 @@ pipeline {
       steps {
       sh'''
       TotalWebservers=`docker container ls -a | grep webserver | wc -l`
-       pwd
-       ls
+      docker build -t chanduredy/mybuilder .
+       docker run --rm --network chandu --name webserver -p 8888:8080 -d chanduredy/mybuilder
+
       '''
       }
     }
