@@ -12,26 +12,15 @@ pipeline {
     }
     stage('Build') {
       steps {
-      sh'''
-      #!/bin/sh
-      cd SpringMVCSecurityXML/
-      mvn clean package
-      pwd
-      export name=ChanduReddy123
-      echo $name
-      '''
-    }
-    }
-    stage('Listing') {
-      steps {
-        sh'''
-        #!/bin/sh
-        cd SpringMVCSecurityXML/target/
-        ls
-        pwd
-        echo $name
-        '''
-      }
+          script{
+                TotalWebservers=$(docker container ls -a | grep webserver | wc -l)
+                if [ $TotalWebservers -gt 0 ]; then dc rm -f webserver;fi
+                cd MySampleJava/
+                docker build -t chanduredy/mybuilder .
+                dr --rm --network chandu --name webserver -p 8888:8080 -d chanduredy/mybuilder
+
+              }
+          }
     }
     stage('CopyArtifacts') {
       steps {
@@ -44,10 +33,10 @@ pipeline {
           }
           steps {
             withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'SECRETFILE', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
-      sh'''
+      script{
       scp -i ${SECRETFILE} ~/jobs/JavaApplication/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war ${USERNAME}@10.0.0.94:/home/ubuntu
-      '''
-}
+          }
+        }
 
       }
     }
