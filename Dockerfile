@@ -1,5 +1,5 @@
 from maven
-run git clone https://github.com/ChanduReddy123/MySampleJava.git
+CMD git clone https://github.com/ChanduReddy123/MySampleJava.git
 workdir MySampleJava/SpringMVCSecurityXML/
 run mvn clean package
 
