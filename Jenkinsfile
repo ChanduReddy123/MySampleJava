@@ -34,7 +34,7 @@ pipeline {
           steps {
             withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'SECRETFILE', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
               script{
-                  curl ipconfig.io
+                   echo "appliction is deployed"
                 }
         }
 
