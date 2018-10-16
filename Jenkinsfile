@@ -17,7 +17,7 @@ pipeline {
       if [ $TotalWebservers -gt 0 ]; then docker container rm -f webserver;fi
       docker build -t chanduredy/mybuilder .
       mkdir -p artifacts
-       docker run --rm --network chandu --name webserver -p 8888:8080 -d -v artifacts:/usr/local/tomcat/webapps/ chanduredy/mybuilder
+       docker run --rm --network chandu --name webserver -p 8888:8080 -d -v /home/ubuntu/artifacts:/usr/local/tomcat/webapps/ chanduredy/mybuilder
 
       '''
       }
