@@ -4,4 +4,4 @@ COPY ./SpringMVCSecurityXML .
 RUN mvn clean package
 
 FROM tomcat:alpine
-COPY --from=0 /project/target/*.war /usr/local/tomcat/webapps/chandu.war
+CMD COPY --from=0 /project/target/*.war /usr/local/tomcat/webapps/chandu.war
