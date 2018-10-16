@@ -1,7 +1,7 @@
-FROM maven
+FROM maven as builder
 WORKDIR project
 COPY ./SpringMVCSecurityXML .
 RUN mvn clean package
 
 FROM tomcat:alpine
-CMD COPY --from=0 /project/target/*.war /usr/local/tomcat/webapps/chandu.war
+COPY --from=builder /project/target/*.war /usr/local/tomcat/webapps/chandu.war
