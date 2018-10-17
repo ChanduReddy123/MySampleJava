@@ -42,6 +42,7 @@ pipeline {
         cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/artifacts/
         ls
         curl ipconfig.io
+        echo "application is deployed in `curl ipconfig.io`"
         '''
       }
     }
