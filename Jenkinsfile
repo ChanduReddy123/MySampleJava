@@ -54,6 +54,7 @@ pipeline {
         sh'''
         curl ipconfig.io
         echo "application is deployed in `curl ipconfig.io`"
+        echo "`curl ipcofig.io`:8888"
         '''
       }
     }
