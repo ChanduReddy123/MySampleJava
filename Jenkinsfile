@@ -23,11 +23,11 @@ pipeline {
       '''
       }
     }
-    // stage('CopyArtifacts') {
-    //   steps {
-    //     archiveArtifacts artifacts: '**/*.war', fingerprint: true
-    //   }
-    // }
+    stage('CopyArtifacts') {
+      steps {
+        archiveArtifacts artifacts: '**/*.war', fingerprint: true
+      }
+    }
     stage('Deploy') {
       agent {
               label 'master'
