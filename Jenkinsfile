@@ -44,6 +44,14 @@ pipeline {
         pwd
         cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/artifacts/
         ls
+
+        '''
+      }
+    }
+    stage('Conformation')
+    {
+      steps {
+        sh'''
         curl ipconfig.io
         echo "application is deployed in `curl ipconfig.io`"
         '''
