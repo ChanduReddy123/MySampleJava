@@ -35,6 +35,8 @@ pipeline {
       sh'''
         echo "this is $WORKSPACE"
         pwd
+        cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$Build_NUMBER/archive/artifacts/
+        ls
         '''
       }
     }
