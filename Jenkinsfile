@@ -28,6 +28,14 @@ pipeline {
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
       }
     }
+    stage('Deploy') {
+      agent { label 'master'}
+      steps {
+        input('this is going to be deployed')
+        echo "this is $WORKSPACE"
+        pwd
+      }
+    }
     }
 
   }
