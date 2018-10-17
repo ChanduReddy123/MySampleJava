@@ -23,6 +23,10 @@ pipeline {
       '''
       }
     }
+    stage('Test Env Approval')
+    {
+      input('Are we good to deploy in Prod environment')
+    }
     stage('CopyArtifacts') {
       steps {
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
@@ -37,6 +41,7 @@ pipeline {
         pwd
         cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/artifacts/
         ls
+        curl ipconfig.io
         '''
       }
     }
