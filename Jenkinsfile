@@ -10,7 +10,7 @@ pipeline {
       //     [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ChanduReddy123/MySampleJava.git']]])
        }
     }
-    stage('build'){
+    stage('Build and Deploy in test ENV'){
       steps {
       sh'''
       TotalWebservers=`docker container ls -a | grep webserver | wc -l`
@@ -33,10 +33,10 @@ pipeline {
               label 'master'
           }
           steps {
-            withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'SECRETFILE', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
-              script{
-                   echo "appliction is deployed"
-                }
+            sh'''
+            echo $WORKSPACE
+            
+            '''
         }
 
       }
