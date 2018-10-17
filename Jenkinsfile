@@ -25,7 +25,10 @@ pipeline {
     }
     stage('Test Env Approval')
     {
-      input('Are we good to deploy in Prod environment')
+      steps {
+        input('Are we good to deploy in Prod environment')
+      }
+
     }
     stage('CopyArtifacts') {
       steps {
