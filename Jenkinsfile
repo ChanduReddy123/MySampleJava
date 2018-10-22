@@ -37,9 +37,6 @@ pipeline {
       steps {
         input('Are we good to deploy in Prod environment')
         //kill the container
-        sh'''
-        docker rm -f webserver
-        '''
       }
 
     }
@@ -54,6 +51,9 @@ pipeline {
       steps {
         //use that container name
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
+        sh'''
+        docker rm -f webserver
+        '''
         //copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
       }
     }
