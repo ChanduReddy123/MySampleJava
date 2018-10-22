@@ -79,17 +79,7 @@ pipeline {
     stage('Deploy') {
       steps {
         input('this is going to be deployed')
-      
-      }
-    }
-    stage('Conformation')
-    {
-      steps {
-        sh'''
-        curl ipconfig.io
-        echo "application is deployed in `curl ipconfig.io`"
-        echo "`curl ipcofig.io`:8888"
-        '''
+
       }
     }
     }
