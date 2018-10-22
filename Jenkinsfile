@@ -60,6 +60,7 @@ pipeline {
       }
     }
     stage('testing') {
+      agent { label 'master'}
       steps {
 //        input('this is going to be deployed')
         sh'''
