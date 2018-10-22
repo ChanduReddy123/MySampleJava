@@ -54,9 +54,9 @@ pipeline {
         //copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
       }
     }
-    stage('Deploy') {
+    stage('testing') {
       steps {
-        input('this is going to be deployed')
+//        input('this is going to be deployed')
         sh'''
           whoami
           pwd
