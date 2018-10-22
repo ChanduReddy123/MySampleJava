@@ -84,6 +84,7 @@ pipeline {
       sh'''
         echo "this is $WORKSPACE"
         pwd
+        whoami
         cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target
         ls
 
