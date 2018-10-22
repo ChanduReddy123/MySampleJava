@@ -32,7 +32,7 @@ pipeline {
     }
     stage('Test Env Approval')
     {
-      jenkins_agent1{
+      agent{
         node 'master'
       }
 
