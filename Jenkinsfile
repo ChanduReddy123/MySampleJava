@@ -64,10 +64,12 @@ pipeline {
 
     }
     stage('CopyArtifacts') {
-      docker {
-          image 'maven:3-alpine'
-          args '-v /home/ubuntu/.m2:/root/.m2'
-          label 'jenkins_agent1'
+      agent{
+        docker {
+            image 'maven:3-alpine'
+            args '-v /home/ubuntu/.m2:/root/.m2'
+            label 'jenkins_agent1'
+        }
       }
       steps {
         //use that container name
