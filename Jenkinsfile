@@ -3,6 +3,9 @@ pipeline {
      label 'jenkins_agent1'
   }
   stages {
+    //create the docker agent with name here
+
+
     // stage('GitCheckout') {
     //   steps {
     //     checkout scm
@@ -25,9 +28,10 @@ pipeline {
     // }
     stage('Build') {
       agent{
+        //use the name of docker
       docker {
           image 'maven:3-alpine'
-          args '-v $HOME/.m2:/root/.m2'
+          args '-v /home/ubuntu/.m2:/root/.m2'
           label 'jenkins_agent1'
       }
     }
@@ -52,15 +56,23 @@ pipeline {
     }
     stage('Test Env Approval')
     {
+
       steps {
         input('Are we good to deploy in Prod environment')
+        //kill the container
       }
 
     }
     stage('CopyArtifacts') {
+      docker {
+          image 'maven:3-alpine'
+          args '-v /home/ubuntu/.m2:/root/.m2'
+          label 'jenkins_agent1'
+      }
       steps {
-        //archiveArtifacts artifacts: '../**/*.war', fingerprint: true
-        copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
+        //use that container name
+        archiveArtifacts artifacts: '**/*.war', fingerprint: true
+        //copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
       }
     }
     stage('Deploy') {
