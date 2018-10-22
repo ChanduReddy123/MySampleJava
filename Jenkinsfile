@@ -32,6 +32,9 @@ pipeline {
     }
     stage('Test Env Approval')
     {
+      jenkins_agent1{
+        node 'master'
+      }
 
       steps {
         input('Are we good to deploy in Prod environment')
