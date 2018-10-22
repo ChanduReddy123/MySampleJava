@@ -1,7 +1,5 @@
 pipeline {
-  agent{
-     label 'jenkins_agent1'
-  }
+  agent none
   stages {
     //create the docker agent with name here
 
@@ -45,6 +43,7 @@ pipeline {
         }
     }
     stage('Deploy into container') {
+      agent { label 'jenkins_agent1'}
       steps {
         sh'''
         TotalWebservers=`docker container ls -a | grep webserver | wc -l`
@@ -77,9 +76,7 @@ pipeline {
         //copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
       }
     }
-    stage('Deploy') {
-      agent none
-      
+    stage('Deploy') {      
       steps {
         input('this is going to be deployed')
       sh'''
