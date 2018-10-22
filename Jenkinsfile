@@ -59,7 +59,8 @@ pipeline {
     }
     stage('CopyArtifacts') {
       steps {
-        archiveArtifacts artifacts: '../**/*.war', fingerprint: true
+        //archiveArtifacts artifacts: '../**/*.war', fingerprint: true
+        copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
       }
     }
     stage('Deploy') {
