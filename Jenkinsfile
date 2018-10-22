@@ -36,6 +36,7 @@ pipeline {
             sh '''
             cd SpringMVCSecurityXML
             mvn clean package
+            touch "thisisjenkinsrunner1"
             '''
         }
     }
@@ -45,6 +46,7 @@ pipeline {
         TotalWebservers=`docker container ls -a | grep webserver | wc -l`
         if [ $TotalWebservers -gt 0 ]; then docker container rm -f webserver;fi
          docker run -d --rm --network chandu --name webserver -p 8888:8080 -v $WORKSPACE/../JavaApplication@2/SpringMVCSecurityXML/target:/usr/local/tomcat/webapps/ tomcat:alpine
+         touch "thisishost"
         '''
       }
     }
