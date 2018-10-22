@@ -79,10 +79,10 @@ pipeline {
     stage('Deploy') {
       steps {
         input('this is going to be deployed')
-        script{
+        sh'''
           whoami
           pwd
-        }
+       '''
       }
     }
     }
