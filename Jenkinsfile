@@ -52,7 +52,7 @@ pipeline {
         //use that container name
         archiveArtifacts artifacts: '**/*.war', fingerprint: true
         sh'''
-        docker rm -f webserver
+        docker container rm -f webserver
         '''
         //copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
       }
