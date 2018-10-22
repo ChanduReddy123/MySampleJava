@@ -59,7 +59,7 @@ pipeline {
     }
     stage('CopyArtifacts') {
       steps {
-        archiveArtifacts artifacts: '**/*.war', fingerprint: true
+        archiveArtifacts artifacts: '../**/*.war', fingerprint: true
       }
     }
     stage('Deploy') {
