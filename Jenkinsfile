@@ -79,6 +79,7 @@ pipeline {
     }
     stage('Deploy') {
       agent none
+      
       steps {
         input('this is going to be deployed')
       sh'''
