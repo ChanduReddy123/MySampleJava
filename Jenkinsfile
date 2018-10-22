@@ -1,29 +1,6 @@
 pipeline {
   agent none
   stages {
-    //create the docker agent with name here
-
-
-    // stage('GitCheckout') {
-    //   steps {
-    //     checkout scm
-    //   //   checkout(
-    //   //     [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ChanduReddy123/MySampleJava.git']]])
-    //    }
-    // }
-    // stage('Build and Deploy in test ENV'){
-    //   steps {
-    //   sh'''
-    //   TotalWebservers=`docker container ls -a | grep webserver | wc -l`
-    //   if [ $TotalWebservers -gt 0 ]; then docker container rm -f webserver;fi
-    //   docker build -t chanduredy/mybuilder .
-    //   mkdir -p $WORKSPACE/artifacts
-    //    docker run --rm --network chandu --name webserver -p 8888:8080 -d  chanduredy/mybuilder
-    //    docker cp webserver:/usr/local/tomcat/webapps/chandu.war $WORKSPACE/artifacts
-    //
-    //   '''
-    //   }
-    // }
     stage('Build') {
       agent{
         //use the name of docker
@@ -59,6 +36,7 @@ pipeline {
       steps {
         input('Are we good to deploy in Prod environment')
         //kill the container
+        sh'echo "this container is killed" '
       }
 
     }
