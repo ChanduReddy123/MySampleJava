@@ -36,7 +36,7 @@ pipeline {
       steps {
         input('Are we good to deploy in Prod environment')
         //kill the container
-        sh '''
+        sh'''
         echo "this container is killed"
         '''
       }
