@@ -35,13 +35,12 @@ pipeline {
       agent{
         node 'master'
       }
-
       steps {
         input('Are we good to deploy in Prod environment')
         //kill the container
-        sh'''
-        echo "this container is killed"
-        '''
+        // sh'''
+        // echo "this container is killed"
+        // '''
       }
 
     }
