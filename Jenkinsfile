@@ -30,20 +30,21 @@ pipeline {
         '''
       }
     }
-    stage('Test Env Approval')
-    {
-      agent{
-        node 'master'
-      }
-      // steps {
-      // //  input('Are we good to deploy in Prod environment')
-      //   //kill the container
-      //   // sh'''
-      //   // echo "this container is killed"
-      //   // '''
-      // }
-
-    }
+    // stage('Test Env Approval')
+    // {
+    //   agent{
+    //     node 'master'
+    //   }
+    //
+    //   steps {
+    //     input('Are we good to deploy in Prod environment')
+    //     //kill the container
+    //     sh'''
+    //     echo "this container is killed"
+    //     '''
+    //   }
+    //
+    // }
     stage('CopyArtifacts') {
       agent{
         docker {
