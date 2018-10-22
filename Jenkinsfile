@@ -38,7 +38,7 @@ pipeline {
         input('Are we good to deploy in Prod environment')
         //kill the container
         sh'''
-        echo "this container is killed"
+        docker rm -f webserver
         '''
       }
 
@@ -62,8 +62,8 @@ pipeline {
       steps {
 //        input('this is going to be deployed')
         sh'''
-          whoami
-          pwd
+          cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/
+          ls
        '''
       }
     }
