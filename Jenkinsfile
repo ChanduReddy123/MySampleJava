@@ -80,7 +80,7 @@ pipeline {
     stage('Deploy') {
       agent { label 'master'}
       steps {
-        input('this is going to be deployed')
+      //  input('this is going to be deployed')
       sh'''
         echo "this is $WORKSPACE"
         pwd
