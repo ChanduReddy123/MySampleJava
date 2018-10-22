@@ -76,17 +76,10 @@ pipeline {
         //copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
       }
     }
-    stage('Deploy') {      
+    stage('Deploy') {
       steps {
         input('this is going to be deployed')
-      sh'''
-        echo "this is $WORKSPACE"
-        pwd
-        whoami
-        cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target
-        ls
-
-        '''
+      
       }
     }
     stage('Conformation')
