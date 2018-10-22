@@ -39,7 +39,7 @@ pipeline {
             '''
         }
     }
-    stage('Deploy') {
+    stage('Deploy into container') {
       steps {
         sh'''
         TotalWebservers=`docker container ls -a | grep webserver | wc -l`
