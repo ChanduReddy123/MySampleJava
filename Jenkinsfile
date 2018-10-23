@@ -74,8 +74,8 @@ withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'KE
 }
 
         sh'''
-          
-          scp -i $KEY /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war /var/lib/tomcat8/webapps/chandu.war
+
+          scp -i $KEY /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war USERNAME@10.0.0.94:/var/lib/tomcat8/webapps/chandu.war
        '''
       }
     }
