@@ -40,21 +40,29 @@ pipeline {
       }
 
     }
-    stage('CopyArtifacts') {
-      agent{
-        docker {
-            image 'maven:3-alpine'
-            args '-v /home/ubuntu/.m2:/root/.m2'
-            label 'jenkins_agent1'
+    stage('cleaning agent') {
+      parallel{
+        stage('copy')
+        {
+            agent {
+              docker {
+                image 'maven:3-alpine'
+                label 'jenkins_agent1'
+              }
+            }
+            steps {
+              archiveArtifacts artifacts: '**/*.war', fingerprint: true
+            }
+
         }
-      }
-      steps {
-        //use that container name
-        archiveArtifacts artifacts: '**/*.war', fingerprint: true
-        // sh'''
-        // docker container rm -f webserver
-        // '''
-        //copyArtifacts filter: '*.war', fingerprintArtifacts: true, projectName: 'JavaApplication', selector: lastSuccessful()
+        stage('Kill container') {
+          agent { label 'jenkins_agent1'}
+          steps {
+            sh'''
+            docker container rm -f webserver
+            '''
+          }
+        }
       }
     }
     stage('testing') {
