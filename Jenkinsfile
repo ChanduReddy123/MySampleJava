@@ -71,12 +71,15 @@ pipeline {
 //        input('this is going to be deployed')
 withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'KEY', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
     // some block
+    sh'''
+     scp -i $KEY /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war $USERNAME@10.0.0.94:/var/lib/tomcat8/webapps/chandu.war
+    '''
 }
 
-        sh'''
-          #cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/
-          scp -i $KEY /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war /var/lib/tomcat8/webapps/chandu.war
-       '''
+       //  sh'''
+       //    #cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/
+       //    scp -i $KEY /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war /var/lib/tomcat8/webapps/chandu.war
+       // '''
       }
     }
     }
