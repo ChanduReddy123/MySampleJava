@@ -65,7 +65,7 @@ pipeline {
         }
       }
     }
-    stage('testing') {
+    stage('Deploying to Prod server') {
       agent { label 'master'}
       steps {
 //        input('this is going to be deployed')
