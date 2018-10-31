@@ -65,23 +65,18 @@ pipeline {
         }
       }
     }
-    stage('Deployment') {
+    stage('testing') {
       agent { label 'master'}
       steps {
 //        input('this is going to be deployed')
-// withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'KEY', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
-//     // some block
-//     //use deploy plugin
-//    //  sh"""
-//    //    scp -i $KEY /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war $USERNAME@10.0.0.94:/var/lib/tomcat8/webapps/chandu.war
-//    // """
-// }
-sshPublisher(publishers: [sshPublisherDesc(configName: 'webserver', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: '', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/home/ubuntu/', remoteDirectorySDF: false, removePrefix: '', sourceFiles: '**/*.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
-
-
-
-      }
+withCredentials([sshUserPrivateKey(credentialsId: 'Tomcat', keyFileVariable: 'KEY', passphraseVariable: '', usernameVariable: 'USERNAME')]) {
+        // some block
+        sh'''
+          #cd /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/
+          scp -i $KEY /var/lib/jenkins/jobs/$JOB_NAME/builds/$BUILD_NUMBER/archive/SpringMVCSecurityXML/target/*.war /var/lib/tomcat8/webapps/chandu.war
+       '''
+            }
+          }
     }
-    }
-
   }
+}
