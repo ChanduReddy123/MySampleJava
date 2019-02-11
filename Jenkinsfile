@@ -19,7 +19,7 @@ pipeline {
     stage('Listing') {
       steps{
           sh'''
-          cd target/
+         # cd target/
           ls
           pwd
           '''
