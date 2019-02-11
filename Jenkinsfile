@@ -1,18 +1,19 @@
 pipeline {
   agent{
-    agent { label 'jenkins_agent1'}
+    agent any
   }
   stages {
     stage('GitCheckout') {
       steps {
-        checkout(
-          [$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ChanduReddy123/MySampleJava.git']]])
+        sh'''
+         echo 'this is checkout '
+        '''
       }
     }
     stage('Build') {
       sh'''
       cd SpringMVCSecurityXML/
-      mvn clean package
+      pwd
       '''
     }
     stage('Listing') {
