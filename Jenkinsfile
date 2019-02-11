@@ -40,7 +40,7 @@ pipeline {
         stage('Kill container') {
           steps {
             sh'''
-            echo "kill the contianer "
+            echo "kill the contianer now "
             '''
           }
         }
