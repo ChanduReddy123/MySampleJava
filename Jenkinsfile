@@ -1,7 +1,5 @@
 pipeline {
-  agent{
-    agent any
-  }
+  agent any
   stages {
     stage('GitCheckout') {
       steps {
@@ -11,17 +9,21 @@ pipeline {
       }
     }
     stage('Build') {
-      sh'''
-      cd SpringMVCSecurityXML/
-      pwd
-      '''
+      steps{
+              sh'''
+              cd SpringMVCSecurityXML/
+              pwd
+              '''
+        }
     }
     stage('Listing') {
-      sh'''
-      cd target/
-      ls
-      pwd
-      '''
+      steps{
+          sh'''
+          cd target/
+          ls
+          pwd
+          '''
+      }
     }
   }
 }
