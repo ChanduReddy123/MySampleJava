@@ -14,7 +14,7 @@ pipeline{
                      script {
                          def env = test('master')
                          
-                        sh '''
+                        sh """
                         echo ${env}
                         echo $env
                         ls
@@ -24,7 +24,7 @@ pipeline{
 
                         #scp -i $pem -o StrictHostKeyChecking=no 1 ubuntu@34.208.103.36:~
                         #ssh -i $pem  -o StrictHostKeyChecking=no  ubuntu@34.208.103.36 'cat 1'
-                    '''
+                    """
                      }
             }
             }
