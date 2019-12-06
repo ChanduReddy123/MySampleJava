@@ -4,12 +4,13 @@ pipeline{
     agent any
     stages{
         stage("A"){
-            def env = getEnvironment('master');
-            println($env);
+            
             steps{
                  withCredentials([sshUserPrivateKey(credentialsId: 'PEM', keyFileVariable: 'pem')]) {
                    
                     sh '''
+                    def env = getEnvironment('master');
+                    println($env);
                         ls
                         echo "not at all" > 1
                         
