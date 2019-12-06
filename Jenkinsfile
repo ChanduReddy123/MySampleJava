@@ -4,9 +4,9 @@ pipeline{
     agent any
     stages{
         stage("A"){
+            def env = getEnvironment('master');
+            println($env);
             steps{
-                def env = getEnvironment('master');
-                 println($env);
                  withCredentials([sshUserPrivateKey(credentialsId: 'PEM', keyFileVariable: 'pem')]) {
                    
                     sh '''
