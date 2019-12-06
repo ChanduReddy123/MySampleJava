@@ -1,7 +1,6 @@
+@Library('environment') _
 pipeline{
     agent any
-    @Library('environment')
-
     stages{
         stage("A"){
             steps{
