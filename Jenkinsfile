@@ -12,8 +12,8 @@ pipeline{
             steps{
                  withCredentials([sshUserPrivateKey(credentialsId: 'PEM', keyFileVariable: 'pem')]) {
                      script {
-                         def env = getEnvironment('master');
-                           println($env);
+                         def env = test('master')
+                          println($env)
                         sh '''
                     
                         ls
