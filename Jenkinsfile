@@ -13,7 +13,8 @@ pipeline{
                  withCredentials([sshUserPrivateKey(credentialsId: 'PEM', keyFileVariable: 'pem')]) {
                      script {
                          def env = test('master')
-                          println($env)
+                         echo "${env}"
+                         print(env)
                         sh '''
                     
                         ls
