@@ -5,9 +5,10 @@ pipeline{
     stages{
         stage("A"){
             steps{
+                def env = getEnvironment('master');
+                 println($env);
                  withCredentials([sshUserPrivateKey(credentialsId: 'PEM', keyFileVariable: 'pem')]) {
-                   def env = getEnvironment('master');
-                   println($env);
+                   
                     sh '''
                         ls
                         echo "not at all" > 1
