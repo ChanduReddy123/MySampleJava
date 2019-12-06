@@ -1,4 +1,4 @@
-@Library('environment')
+@Library('environment');
 pipeline{
     agent any
     stages{
