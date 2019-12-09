@@ -19,6 +19,6 @@ pipeline{
         }
        
     }
-    post { always { ciSkip action: 'postProcess' } }
+    post { always { steps {  ciSkip action: 'postProcess' } } } 
 
 }
