@@ -8,17 +8,21 @@ pipeline{
 
     stages{
         stage('prepare') {
+            steps{
                             script {
                                     CheckCommit(action: 'check')
                                     }
+            }
          }
         stage('Building'){
+            steps{
             script{
                     echo "Building the application"
+            }
             }
         }
        
     }
-    post { always { steps {  CheckCommit(action: 'postProcess') } } } 
+    post { always  {  CheckCommit(action: 'postProcess') } } 
 
 }
