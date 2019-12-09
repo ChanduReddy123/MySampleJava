@@ -3,23 +3,22 @@
 pipeline{
     agent any
     libraries {
-            lib('environment@master')
-                }
+                lib('environment@master')
+              }
 
     stages{
-        stage("A"){
-            
+        stage('prepare') {
+                            steps {
+                                    ciSkip action: 'check' 
+                                    }
+         }
+        stage('Building'){
             steps{
-                     script {
-                         def env = test('master')
-                         sh """
-                         echo $env
-                         """
-                     }
-            
+                    echo "Building the application"
             }
-
         }
+       
     }
+    post { always { ciSkip action: 'postProcess' } }
 
 }
