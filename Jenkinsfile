@@ -9,7 +9,7 @@ pipeline{
     stages{
         stage('prepare') {
                             steps {
-                                    CheckCommit action: 'check' 
+                                    CheckCommit(action: 'check')
                                     }
          }
         stage('Building'){
@@ -19,6 +19,6 @@ pipeline{
         }
        
     }
-    post { always { steps {  CheckCommit action: 'postProcess' } } } 
+    post { always { steps {  CheckCommit(action: 'postProcess') } } } 
 
 }
