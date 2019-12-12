@@ -15,7 +15,7 @@ pipeline{
                                 
                                        sh """
                                       
-                                       printenv
+                                       echo "change author = ${CHANGE_AUTHOR}"
                                        
                                        """
                                     }
