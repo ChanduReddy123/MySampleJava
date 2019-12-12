@@ -16,9 +16,9 @@ pipeline{
         stage("Manual"){
            
             steps{
-                    sh '''
+                    sh """
                         echo "$isStartedByUser"
-                    '''
+                    """
             }
         }
         stage("WebHook"){
