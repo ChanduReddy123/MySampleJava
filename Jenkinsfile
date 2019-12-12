@@ -14,10 +14,10 @@ pipeline{
     
     stages{
         stage("Manual"){
-            when isStartedByUser
+           
             steps{
                     sh '''
-                        echo "this is manual"
+                        echo "${env.isStartedByUser}"
                     '''
             }
         }
