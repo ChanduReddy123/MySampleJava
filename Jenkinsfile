@@ -19,14 +19,17 @@ pipeline{
            }
             steps{
                     sh """
-                        echo "This is in manual"
+                        echo "This is in webhook"
                     """
             }
         }
         stage("WebHook"){
+            when {
+               expression { isStartedByUser == true }
+           }
             steps {
                 sh '''
-                    echo "this is webhook"
+                    echo "this is manual"
                     '''
             }
         }
