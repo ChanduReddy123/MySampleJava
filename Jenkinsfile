@@ -1,5 +1,5 @@
 def ip="1.2.3.4"
-def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause) != null
+def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
 //def user = currentBuild.rawBuild.getCauses()[0].toString()
 //def user = currentBuild.rawBuild.toString()
 pipeline{
