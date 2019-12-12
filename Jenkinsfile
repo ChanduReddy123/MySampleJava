@@ -1,6 +1,6 @@
 def ip="1.2.3.4"
 //def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause) != null
-//def user = env.BUILD_USER
+def user = currentBuild.rawBuild.getCauses()[0].toString()
 pipeline{
     agent any
     libraries {
@@ -15,7 +15,7 @@ pipeline{
                                 
                                        sh """
                                       
-                                       echo "change author = ${CHANGE_AUTHOR}"
+                                       echo "change author = ${user}"
                                        
                                        """
                                     }
