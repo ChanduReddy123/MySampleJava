@@ -15,6 +15,9 @@ pipeline{
                                 
                                        sh """
                                        echo "build id is ${BUILD_ID}"
+                                       echo "git branch is ${GIT_BRANCH}"
+                                       echo "git commit is ${GIT_COMMIT}"
+                                       
                                        """
                                     }
             }
