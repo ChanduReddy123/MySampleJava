@@ -14,7 +14,7 @@ pipeline{
                                     //CheckCommit(action: 'check')
                                 
                                        sh """
-                                       echo "${GIT_COMMITTER_NAME}"
+                                       echo "build id is ${BUILD_ID}"
                                        """
                                     }
             }
