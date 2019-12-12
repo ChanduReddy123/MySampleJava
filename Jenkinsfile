@@ -13,20 +13,22 @@ pipeline{
               }
     
     stages{
-        stage("Testing"){
+        stage("Manual"){
+            when isStartedByUser
             steps{
-                 if( isStartedByUser ) {
-                                    sh """
-                                        echo 'This is manual'
-                                        """
-                                }
-                                else{
-                                    sh """
-                                    echo 'started by webhook'
-                                    """
-                                }
+                    sh '''
+                        echo "this is manual"
+                    '''
             }
         }
+        stage("WebHook"){
+            steps {
+                sh '''
+                    echo "this is webhook"
+                    '''
+            }
+        }
+        
         }
        
     post { always  {  CheckCommit(action: 'postProcess') } } 
