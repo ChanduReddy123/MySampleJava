@@ -1,7 +1,7 @@
 def ip="1.2.3.4"
-def isStartedByUser = false
+def isStartedByUser = true
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
-    isStartedByUser = true
+    isStartedByUser = false
 }
 //def user = currentBuild.rawBuild.getCauses()[0].toString()
 //def user = currentBuild.rawBuild.toString()
@@ -17,11 +17,13 @@ pipeline{
                             script {
                                     //CheckCommit(action: 'check')
                                 
-                                       sh """
-                                       echo "change author ${isStartedByUser}"
-
-                                       """
-                                    }
+                                if( isStartedByUser ) {
+                                 echo "manual"   
+                                }
+                                else{
+                                    echo "started by webhook"
+                                }
+                           }
             }
          }
         stage('Building'){
