@@ -14,11 +14,12 @@ pipeline{
                                     //CheckCommit(action: 'check')
                                 
                                        sh """
-                                       echo "build id is ${BUILD_ID}"
-                                       echo "git branch is ${GIT_BRANCH}"
-                                       echo "git commit is ${GIT_COMMIT}"
-                                       echo "git commiter is ${GIT_COMMITTER_NAME}"
-                                       echo "git author name ${GIT_AUTHOR_NAME}"
+                                       #echo "build id is ${BUILD_ID}"
+                                       #echo "git branch is ${GIT_BRANCH}"
+                                       #echo "git commit is ${GIT_COMMIT}"
+                                       #echo "git commiter is ${GIT_COMMITTER_NAME}"
+                                       #echo "git author name ${GIT_AUTHOR_NAME}"
+                                       printenv
                                        
                                        """
                                     }
