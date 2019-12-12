@@ -13,8 +13,7 @@ pipeline{
                             script {
                                     //CheckCommit(action: 'check')
                                 
-                                echo "${user}"
-                                //echo "${isStartedByUser}"
+                                echo "${GIT_COMMITTER_NAME}"
                                     }
             }
          }
