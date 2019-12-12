@@ -17,9 +17,9 @@ pipeline{
         stage('Building'){
             steps{
             script{
-                    sh """
+                    sh '''
                         echo $ip
-                    """
+                   '''
             }
             }
         }
