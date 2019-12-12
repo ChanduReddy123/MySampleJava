@@ -13,31 +13,22 @@ pipeline{
               }
     
     stages{
-        stage('prepare') {
-            steps{
-                            script {
-                                    //CheckCommit(action: 'check')
-                                
-                                if( isStartedByUser ) {
-                                 echo "manual"   
+        stage("Testing"){
+            script{
+                 if( isStartedByUser ) {
+                                    sh """
+                                        echo 'This is manual'
+                                        """"
                                 }
                                 else{
-                                    echo "started by webhook"
+                                    sh """
+                                    echo 'started by webhook'
+                                    """
                                 }
-                           }
-            }
-         }
-        stage('Building'){
-            steps{
-            script{
-                    sh '''
-                        echo $ip
-                   '''
-            }
             }
         }
+        }
        
-    }
     post { always  {  CheckCommit(action: 'postProcess') } } 
 
 }
