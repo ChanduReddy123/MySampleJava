@@ -1,5 +1,5 @@
 def ip="1.2.3.4"
-
+def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause) != null
 pipeline{
     agent any
     libraries {
@@ -11,7 +11,9 @@ pipeline{
             steps{
                             script {
                                     //CheckCommit(action: 'check')
-                                echo "${BUILD_USER}"
+                                
+                                //echo "${BUILD_USER}"
+                                echo "${isStartedByUser}"
                                     }
             }
          }
