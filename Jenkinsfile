@@ -18,7 +18,7 @@ pipeline{
                  if( isStartedByUser ) {
                                     sh """
                                         echo 'This is manual'
-                                        """"
+                                        """
                                 }
                                 else{
                                     sh """
