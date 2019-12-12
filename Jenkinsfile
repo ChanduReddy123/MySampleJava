@@ -14,10 +14,12 @@ pipeline{
     
     stages{
         stage("Manual"){
-           
+           when {
+               expression { isStartedByUser == 'false' }
+           }
             steps{
                     sh """
-                        echo "$isStartedByUser"
+                        echo "This is in manual"
                     """
             }
         }
