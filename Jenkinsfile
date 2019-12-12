@@ -1,7 +1,7 @@
 def ip="1.2.3.4"
-def isStartedByUser = true
+def isStartedByUser = false
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
-    isStartedByUser = false
+    isStartedByUser = true
 }
 //def user = currentBuild.rawBuild.getCauses()[0].toString()
 //def user = currentBuild.rawBuild.toString()
