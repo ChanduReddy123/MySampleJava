@@ -17,7 +17,7 @@ pipeline{
            
             steps{
                     sh '''
-                        echo "${env.isStartedByUser}"
+                        echo "$isStartedByUser"
                     '''
             }
         }
