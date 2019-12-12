@@ -15,7 +15,7 @@ pipeline{
     stages{
         stage("Manual"){
            when {
-               expression { isStartedByUser == 'false' }
+               expression { isStartedByUser == false }
            }
             steps{
                     sh """
