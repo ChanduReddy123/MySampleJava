@@ -14,7 +14,6 @@ pipeline{
                                     //CheckCommit(action: 'check')
                                 
                                        sh """
-                                     
                                        echo "change author = ${user}"
                                        
                                        
