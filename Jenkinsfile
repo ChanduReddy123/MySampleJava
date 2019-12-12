@@ -13,7 +13,7 @@ pipeline{
               }
     
     stages{
-        stage("Manual"){
+        stage("Webhook"){
            when {
                expression { isStartedByUser == false }
            }
@@ -23,7 +23,7 @@ pipeline{
                     """
             }
         }
-        stage("WebHook"){
+        stage("Manual"){
             when {
                expression { isStartedByUser == true }
            }
