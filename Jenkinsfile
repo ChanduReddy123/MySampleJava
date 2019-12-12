@@ -13,7 +13,9 @@ pipeline{
                             script {
                                     //CheckCommit(action: 'check')
                                 
-                                echo "$env.GIT_COMMITTER_NAME"
+                                       sh """
+                                       echo "${GIT_COMMITTER_NAME}"
+                                       """
                                     }
             }
          }
