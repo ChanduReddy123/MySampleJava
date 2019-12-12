@@ -17,6 +17,7 @@ pipeline{
                                       
                                        echo "change author = ${user}"
                                        
+                                       
                                        """
                                     }
             }
