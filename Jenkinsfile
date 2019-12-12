@@ -15,6 +15,7 @@ pipeline{
                                 
                                        sh """
                                        echo "change author = ${user}"
+                                       echo "author ${GIT_AUTHOR_NAME}"
                                        
                                        
                                        """
