@@ -19,9 +19,7 @@ pipeline{
                                 
                                        sh """
                                        echo "change author ${isStartedByUser}"
-                                       
-                                       
-                                       
+
                                        """
                                     }
             }
