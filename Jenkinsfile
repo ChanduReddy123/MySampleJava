@@ -1,11 +1,11 @@
-
+def ip="1.2.3.4"
 
 pipeline{
     agent any
     libraries {
                 lib('environment@master')
               }
-
+    
     stages{
         stage('prepare') {
             steps{
@@ -17,7 +17,9 @@ pipeline{
         stage('Building'){
             steps{
             script{
-                    echo "Building the application"
+                    sh """
+                        echo $ip
+                    """
             }
             }
         }
