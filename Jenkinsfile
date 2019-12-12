@@ -14,7 +14,7 @@ pipeline{
     
     stages{
         stage("Testing"){
-            script{
+            steps{
                  if( isStartedByUser ) {
                                     sh """
                                         echo 'This is manual'
