@@ -1,5 +1,8 @@
 def ip="1.2.3.4"
-def isStartedByUser = currentBuild.rawBuild.getCause(hudson.model.Cause$UserIdCause)
+def isStartedByUser = false
+if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
+    isStartedByUser = true
+}
 //def user = currentBuild.rawBuild.getCauses()[0].toString()
 //def user = currentBuild.rawBuild.toString()
 pipeline{
@@ -15,7 +18,7 @@ pipeline{
                                     //CheckCommit(action: 'check')
                                 
                                        sh """
-                                       echo "change author = ${isStartedByUser}"
+                                       echo "change author ${isStartedByUser}"
                                        
                                        
                                        
