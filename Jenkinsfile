@@ -10,7 +10,6 @@ pipeline{
         stage('prepare') {
             steps{
                             script {
-                                     echo $params
                                     CheckCommit(action: 'check')
                                     }
             }
