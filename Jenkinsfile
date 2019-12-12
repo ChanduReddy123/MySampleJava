@@ -10,7 +10,8 @@ pipeline{
         stage('prepare') {
             steps{
                             script {
-                                    CheckCommit(action: 'check')
+                                    //CheckCommit(action: 'check')
+                                echo "${BUILD_USER}"
                                     }
             }
          }
