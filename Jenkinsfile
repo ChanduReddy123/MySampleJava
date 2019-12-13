@@ -1,6 +1,6 @@
 def ip="0.0.0.0"
 if ( env.BRANCH_NAME == 'master'){
-     ip = $Development
+     ip = env.Development
 }
 
 def isStartedByUser = false
