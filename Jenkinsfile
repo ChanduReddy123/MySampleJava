@@ -5,7 +5,7 @@ def getBranch(){
 }
 def getIP(){
                          if ( BRANCH_NAME == "master" ){
-                          ip = env.Development
+                          ip = "fasak"
                          }
                          else{
                               ip = "2.34.5"
