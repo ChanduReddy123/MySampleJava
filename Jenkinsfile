@@ -1,5 +1,5 @@
 def ip="0.0.0.0"
-if ( BRANCH_NAME == 'master'){
+if ( env.BRANCH_NAME == 'master'){
      ip = $Development
 }
 
