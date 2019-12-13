@@ -2,8 +2,10 @@ def ip="0.0.0.0"
 
 
 def getBranch(){
- return scm.branches[0].name
+ //return scm.branches[0].name
+ return BRANCH_NAME
 }
+
 def getIP(branch){
                          if ( branch == "master" ){
                               ip = env.Development
