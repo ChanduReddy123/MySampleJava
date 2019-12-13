@@ -1,5 +1,7 @@
 
 def isStartedByUser = false
+
+
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
     isStartedByUser = true
 }
