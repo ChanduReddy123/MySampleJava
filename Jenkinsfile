@@ -25,9 +25,10 @@ pipeline{
            when {
                expression { isStartedByUser == false }
            }
-             def result = getIP(${BRANCH_NAME})
+            
              
             steps{
+               def result = getIP(${BRANCH_NAME})
                     sh """
                         echo "This is in webhook"
                         echo "${result}"
