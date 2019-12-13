@@ -1,5 +1,6 @@
 def ip="0.0.0.0"
 
+
 def getBranch(){
  return scm.branches[0].name
 }
