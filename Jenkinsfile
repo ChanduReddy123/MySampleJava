@@ -1,4 +1,8 @@
 def ip="0.0.0.0"
+
+def getBranch(){
+ return scm.branches[0].name
+}
 def getIP(branch){
                          if ( branch == "master" ){
                               ip = env.Development
@@ -29,8 +33,8 @@ pipeline{
              
             steps{
               script{
-                echo "${BRANCH_NAME}"
-               def result = getIP(BRANCH_NAME)
+                //echo "${BRANCH_NAME}"
+               def result = getBranch()
                     sh """
                         echo "This is in webhook"
                         echo "${result}"
