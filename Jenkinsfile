@@ -29,7 +29,7 @@ pipeline{
              
             steps{
               script{
-               def result = getIP(${BRANCH_NAME})
+               def result = getIP("${BRANCH_NAME}")
                     sh """
                         echo "This is in webhook"
                         echo "${result}"
