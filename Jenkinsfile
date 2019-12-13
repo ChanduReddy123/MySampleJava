@@ -20,6 +20,8 @@ pipeline{
             steps{
                     sh """
                         echo "This is in webhook"
+                        echo "${Development}"
+                        echo "${Stage}"
                     """
             }
         }
