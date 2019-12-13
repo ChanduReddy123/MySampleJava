@@ -27,7 +27,8 @@ pipeline{
                //def result = getIP()
                     sh """
                         echo "This is in webhook"
-                        echo "${env}"
+                        echo "${env.IP}"
+                        echo "${Beta}"
                     """
               }
             }
