@@ -5,10 +5,10 @@ def getBranch(){
 }
 def getIP(){
                          if ( BRANCH_NAME == "master" ){
-                          ip = "fasak"
+                          return "fasak"
                          }
                          else{
-                              ip = "2.34.5"
+                              return  "2.34.5"
                          }
 }
 def isStartedByUser = false
