@@ -16,6 +16,13 @@ pipeline{
               }
     
     stages{
+        stage("Check"){
+            steps{
+                script{
+                    CheckCommit(action: 'check') 
+                }
+            }
+        }
         stage("Webhook"){
 //           when {
 //               expression { isStartedByUser == false }
