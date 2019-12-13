@@ -5,7 +5,7 @@ def getBranch(){
 }
 def getIP(){
                          if ( BRANCH_NAME == "master" ){
-                          return BRANCH_NAME
+                          return "${Development}"
                          }
                          else{
                               return  "2.34.5"
