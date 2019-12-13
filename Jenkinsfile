@@ -1,20 +1,9 @@
-def ip="0.0.0.0"
 
-def getBranch(){
- return scm.branches[0].name
-}
-def getIP(){
-                         if ( BRANCH_NAME == "master" ){
-                          return "${Development}"
-                         }
-                         else{
-                              return  "2.34.5"
-                         }
-}
 def isStartedByUser = false
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
     isStartedByUser = true
 }
+def testing = ${GIT_COMMITTER_NAME}
 //def user = currentBuild.rawBuild.getCauses()[0].toString()
 //def user = currentBuild.rawBuild.toString()
 pipeline{
@@ -34,10 +23,10 @@ pipeline{
             steps{
               script{
                 //echo "${BRANCH_NAME}"
-               def result = getIP()
+               //def result = getIP()
                     sh """
                         echo "This is in webhook"
-                        echo "${result}"
+                        echo "${testing}"
                     """
               }
             }
