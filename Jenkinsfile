@@ -2,6 +2,9 @@ def ip="0.0.0.0"
 if ( env.BRANCH_NAME == "master" ){
      ip = env.Development
 }
+else{
+     ip = "345"
+}
 
 def isStartedByUser = false
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
