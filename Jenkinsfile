@@ -3,7 +3,7 @@ def isStartedByUser = false
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
     isStartedByUser = true
 }
-def testing = ${GIT_COMMITTER_NAME}
+def testing = "${GIT_COMMITTER_NAME}"
 //def user = currentBuild.rawBuild.getCauses()[0].toString()
 //def user = currentBuild.rawBuild.toString()
 pipeline{
