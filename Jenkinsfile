@@ -3,7 +3,6 @@ def isStartedByUser = false
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
     isStartedByUser = true
 }
-def testing = "${GIT_COMMITTER_NAME}"
 //def user = currentBuild.rawBuild.getCauses()[0].toString()
 //def user = currentBuild.rawBuild.toString()
 pipeline{
@@ -22,11 +21,12 @@ pipeline{
              
             steps{
               script{
+                  def env = GetEnvironment()
                 //echo "${BRANCH_NAME}"
                //def result = getIP()
                     sh """
                         echo "This is in webhook"
-                        echo "${testing}"
+                        echo "${env}"
                     """
               }
             }
