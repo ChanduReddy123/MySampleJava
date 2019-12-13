@@ -26,9 +26,9 @@ pipeline{
     
     stages{
         stage("Webhook"){
-           when {
-               expression { isStartedByUser == false }
-           }
+//           when {
+//               expression { isStartedByUser == false }
+ //          }
             
              
             steps{
