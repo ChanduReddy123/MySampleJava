@@ -3,7 +3,7 @@ if ( env.BRANCH_NAME == "master" ){
      ip = env.Development
 }
 else{
-     ip = "345"
+     ip = env.BRANCH_NAME
 }
 
 def isStartedByUser = false
