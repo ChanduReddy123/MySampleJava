@@ -1,11 +1,12 @@
 def ip="0.0.0.0"
-if ( ${env.BRANCH_NAME} == "master" ){
-     ip = env.Development
+def getIP(branch){
+                         if ( branch == "master" ){
+                              ip = env.Development
+                         }
+                         else{
+                              ip = "2.34.5"
+                         }
 }
-else{
-     ip = env.BRANCH_NAME
-}
-
 def isStartedByUser = false
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
     isStartedByUser = true
@@ -24,10 +25,12 @@ pipeline{
            when {
                expression { isStartedByUser == false }
            }
+             def result = getIP(${BRANCH_NAME})
+             
             steps{
                     sh """
                         echo "This is in webhook"
-                        echo "${ip}"
+                        echo "${result}"
                     """
             }
         }
