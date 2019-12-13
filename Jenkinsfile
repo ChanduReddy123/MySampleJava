@@ -1,6 +1,6 @@
 def ip="0.0.0.0"
 if ( $BRANCH_NAME == 'master'){
-    def ip = $Development
+     ip = $Development
 }
 
 def isStartedByUser = false
