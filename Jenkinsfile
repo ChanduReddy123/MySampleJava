@@ -1,4 +1,8 @@
-def ip="1.2.3.4"
+def ip="0.0.0.0"
+if ( $BRANCH_NAME == 'master'){
+    def ip = $Development
+}
+
 def isStartedByUser = false
 if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
     isStartedByUser = true
@@ -20,8 +24,7 @@ pipeline{
             steps{
                     sh """
                         echo "This is in webhook"
-                        echo "${Development}"
-                        echo "${Stage}"
+                        echo "${ip}"
                     """
             }
         }
