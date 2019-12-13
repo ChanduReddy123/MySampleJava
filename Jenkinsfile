@@ -23,13 +23,37 @@ pipeline{
                     """
             }
         }
-        stage("Manual"){
+
+
+        //we need to use or condition for manual and changeset  with or codition 
+        stage("Anomaly"){
             when {
-               expression { isStartedByUser == true }
-           }
+                    anyOf {
+                                expression { isStartedByUser == true };
+                                changeset "./Anomaly.txt"
+
+                    }
+            }
             steps {
                 sh '''
                     echo "this is manual"
+                    echo "this is anomaly"
+                    '''
+            }
+        }
+
+        stage("Risk"){
+            when {
+                    anyOf {
+                                expression { isStartedByUser == true };
+                                changeset "./Risk.txt"
+
+                    }
+            }
+            steps {
+                sh '''
+                    echo "this is manual"
+                    echo "this is Risk"
                     '''
             }
         }
