@@ -1,59 +1,86 @@
-pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      
-        steps {
-        //  checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [[$class: 'CleanBeforeCheckout']], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/ChanduReddy123/javasample.git']]])
-            sh '''
-            echo "this is in build stage"
-            '''
-        }
-    }
-    stage('Deploy into container') {
+def ip="0.0.0.0"
 
-      steps {
-        sh'''
-        echo "this is in Deploy"
-        '''
-      }
-    }
-    stage('Test Env Approval')
-    {
-      agent { label 'master'}
-
-      steps {
-        input('Are we good to deploy in Prod environment')
-        //kill the container
-      }
-
-    }
-    stage('cleaning agent') {
-      parallel{
-        stage('copy')
-        {
-            steps {
-              echo "copy the artifacts "
+def getBranch(){
+ return scm.branches[0].name
+}
+def getIP(branch){
+                         if ( branch == "master" ){
+                              ip = env.Development
+                         }
+                         else{
+                              ip = "2.34.5"
+                         }
+}
+def isStartedByUser = false
+if ( currentBuild.rawBuild.getCauses()[0].toString().contains('UserIdCause') ){
+    isStartedByUser = true
+}
+//def user = currentBuild.rawBuild.getCauses()[0].toString()
+//def user = currentBuild.rawBuild.toString()
+pipeline{
+    
+    agent any
+    libraries {
+                lib('environment@master')
+              }
+    
+    stages{
+        stage("Webhook"){
+//           when {
+//               expression { isStartedByUser == false }
+ //          }
+            
+             
+            steps{
+              script{
+                //echo "${BRANCH_NAME}"
+               def result = getBranch()
+                    sh """
+                        echo "This is in webhook"
+                        echo "${result}"
+                    """
+              }
             }
-
         }
-        stage('Kill container') {
-          steps {
-            sh'''
-            echo "kill the contianer now "
-            '''
-          }
-        }
-      }
-    }
-    stage('Deploying to Prod server') {
-      agent { label 'master'}
-      steps {
-        sh'''
-        echo "Depoly to prod server"
-        '''
-      }
-    }
-    }
 
-  }
+
+        //we need to use or condition for manual and changeset  with or codition 
+        stage("Anomaly"){
+            when {
+                    anyOf {
+                                expression { isStartedByUser == true };
+                                changeset "./Anomaly.txt"
+
+                    }
+            }
+            steps {
+                sh '''
+                    echo "this is manual"
+                    echo "this is anomaly"
+                    '''
+            }
+        }
+
+        stage("Risk"){
+            when {
+                    anyOf {
+                                expression { isStartedByUser == true };
+                                changeset "./Risk.txt"
+
+                    }
+            }
+            steps {
+                sh '''
+                    echo "this is manual"
+                    echo "this is Risk"
+                    '''
+            }
+        }
+        
+        }
+       
+    post { always  {  CheckCommit(action: 'postProcess') } } 
+
+}
+
+
