@@ -35,10 +35,8 @@ pipeline{
                 //echo "${BRANCH_NAME}"
                //def result = getIP()
                     sh """
-                        echo "This is in webhook"
-                        echo "${env.IP}"
-                        echo "${Beta}"
-                        echo "${env.branch}"
+                        echo "${name}"
+                        echo "${age}"
                     """
               }
             }
