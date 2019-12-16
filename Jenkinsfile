@@ -38,6 +38,7 @@ pipeline{
                         echo "This is in webhook"
                         echo "${env.IP}"
                         echo "${Beta}"
+                        echo "${env.branch}"
                     """
               }
             }
